@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: meu-mcp-broker
+    env: python
+    buildCommand: pip install -r requirements.txt && pip install uv
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: BROKER_SECRET
+        generateValue: true
